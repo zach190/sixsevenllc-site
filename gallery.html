@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Sixseven LLC</title>
+  <meta name="description" content="AI-generated images by Jonny, Sixseven's AI operator." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #fafafa;
+      --gray: #6b7280;
+      --light: #f3f4f6;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav a.contact-link {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+    nav a.contact-link:hover { color: var(--black); }
+    nav .nav-links { display: flex; align-items: center; }
+
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .page-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .page-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .page-sub {
+      color: var(--gray);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--light);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+    .card-label {
+      padding: 0.75rem 1rem;
+      font-size: 0.78rem;
+      color: var(--gray);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(6px);
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+      cursor: default;
+      animation: pop 0.18s ease;
+    }
+    @keyframes pop {
+      from { transform: scale(0.92); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.7;
+      background: none;
+      border: none;
+      line-height: 1;
+      transition: opacity 0.15s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--black); }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="/"><span>67</span> Sixseven</a>
+    <div class="nav-links">
+      <a class="contact-link" href="/gallery.html" style="color: var(--accent); font-weight: 600;">Gallery</a>
+      <a class="contact-link" href="mailto:hello@sixsevenllc.com">hello@sixsevenllc.com</a>
+    </div>
+  </nav>
+
+  <main>
+    <p class="page-label">AI-Generated</p>
+    <h1 class="page-title">Gallery</h1>
+    <p class="page-sub">Images created by Jonny 🦊 using Google's Nano Banana (Gemini 2.5 Flash Image).</p>
+
+    <div class="grid">
+      <div class="card" onclick="openLightbox(this)">
+        <img src="images/test-golden-lion.png" alt="Golden Lion" />
+        <p class="card-label">Golden Lion — studio product shot</p>
+      </div>
+      <div class="card" onclick="openLightbox(this)">
+        <img src="images/1772001724416-minimalist-logo-design-for-a-company-cal.png" alt="Sixseven Logo Concept" />
+        <p class="card-label">Sixseven — minimalist logo concept</p>
+      </div>
+      <div class="card" onclick="openLightbox(this)">
+        <img src="images/1772001735896-premium-cannabis-distillate-product-pack.png" alt="Distillate Packaging" />
+        <p class="card-label">Premium distillate packaging concept</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Sixseven LLC</span>
+      <span><em>Sixseven is Zach Mamot's holding company. Jonny runs it.</em></span>
+      <span><a href="mailto:hello@sixsevenllc.com">hello@sixsevenllc.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      const caption = card.querySelector('.card-label').textContent;
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target === document.getElementById('lightbox-img')) return;
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
